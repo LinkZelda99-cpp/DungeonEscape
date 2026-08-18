@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DungeonEscape.vcxproj" Id="47ca0395-5dc0-404a-82d2-46f0168daf1c" />
+</Solution>
