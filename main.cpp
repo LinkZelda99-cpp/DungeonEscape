@@ -29,11 +29,17 @@ int main() {
     std::cout << "----------------------\n";
 
 
+    // Example: programmatically add items to the player's inventory
+    player.addItem(Item(100, "Health Potion", "Restores 20 HP.", true));
+    player.addItem(Item(200, "Old Sword", "A rusty sword. Not consumable.", false));
+    player.showInventory();
+
     while (true) {
         std::cout << "\nWhat would you like to do?\n";
         std::cout << "1. Explore\n";
         std::cout << "2. View stats\n";
-        std::cout << "3. Quit\n";
+        std::cout << "3. Inventory\n";
+        std::cout << "4. Quit\n";
 
         int choice;
         if (!(std::cin >> choice)) {
@@ -52,7 +58,57 @@ int main() {
             player.showStats();
             break;
 
-        case 3:
+        case 3: {
+            // Inventory menu
+            while (true) {
+                player.showInventory();
+                std::cout << "Enter slot number (0-" << (Player::INVENTORY_SIZE - 1) << ") to select an item, or 'e' to exit: ";
+                std::string input;
+                std::cin >> input;
+                if (input == "e" || input == "E" || input == "exit") break;
+                int slot = -1;
+                try {
+                    slot = std::stoi(input);
+                } catch (...) {
+                    std::cout << "Invalid input.\n";
+                    continue;
+                }
+                if (slot < 0 || slot >= Player::INVENTORY_SIZE) {
+                    std::cout << "Invalid slot number.\n";
+                    continue;
+                }
+                if (slot >= static_cast<int>(player.inventory.size())) {
+                    std::cout << "That slot is empty.\n";
+                    continue;
+                }
+
+                // Item actions
+                std::cout << "Selected '" << player.inventory[slot].name << "' - choose action:\n";
+                std::cout << "1. Use\n2. View description\n3. Drop\n4. Exit\n";
+                int a;
+                if (!(std::cin >> a)) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Invalid choice.\n";
+                    continue;
+                }
+                if (a == 1) {
+                    player.useItem(slot);
+                } else if (a == 2) {
+                    player.viewItem(slot);
+                } else if (a == 3) {
+                    player.dropItem(slot);
+                } else if (a == 4) {
+                    // exit inventory
+                    break;
+                } else {
+                    std::cout << "Invalid action.\n";
+                }
+            }
+            break;
+        }
+
+        case 4:
             return 0;
 
         default:
