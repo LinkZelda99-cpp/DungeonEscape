@@ -13,7 +13,7 @@ int main() {
 
     Player player;
 
-    std::cout << "Welcome to Dungeon Escape!\nWhat is your name? ";
+    std::cout << "Welcome to Echoes of Shadows.\nWhat is your name? ";
 
     std::getline(std::cin, player.name);
 
@@ -24,18 +24,18 @@ int main() {
     std::cout << "\nWelcome, " << player.name << "!\n";
     std::cout << "----------------------\n";
     std::cout << "\033[3mThe shadows overwhelm your senses... darker, darker, yet darker.\033[0m\n";
-    std::cout << "\033[3mThe darkness grows stronger... then vanishes.\033[0m\n";
-    std::cout << "You are now in a place you've never been before.\n";
+    std::cout << "\033[3mThe darkness grows stronger... until suddenly, it vanishes.\033[0m\n";
+    std::cout << "You find yourself somewhere you've never been before.\n";
     std::cout << "----------------------\n";
 
-
     // Example: programmatically add items to the player's inventory
-    player.addItem(Item(100, "Health Potion", "Restores 20 HP.", true));
-    player.addItem(Item(200, "Old Sword", "A rusty sword. Not consumable.", false));
-    player.showInventory();
+    //player.addItem(Item(100, "Health Potion", "Restores 20 HP.", true));
+    //player.addItem(Item(200, "Old Sword", "A rusty sword. Not consumable.", false));
+    //player.showInventory();
 
     while (true) {
-        std::cout << "\nWhat would you like to do?\n";
+        std::cout << "You are surrounded by strange things, as if you have entered another world. Ahead of you is a dark cave. To your right are the ruins of what was once a grand castle. To your left lies a forest that looks as though it has stood there for centuries.\n\n";
+        std::cout << "Where would you go in a place like this? Every path feels mysterious. Every direction feels like it hides something.\n";
         std::cout << "1. Explore\n";
         std::cout << "2. View stats\n";
         std::cout << "3. Inventory\n";

@@ -7,7 +7,7 @@
 
 void explore(Player& player) {
 
-    std::cout << "Where do you want to go?\n";
+    std::cout << "You decide you should look around. Where do you want to go?\n";
     std::cout << "1. Dark Cave\n";
     std::cout << "2. Ancient Forest\n";
     std::cout << "3. Abandoned Castle\n";
@@ -24,7 +24,12 @@ void explore(Player& player) {
     switch (choice) {
 
     case 1:
-        std::cout << "You enter the Dark Cave. The walls close in as you walk deeper into the dark, musty cave. CRACK! a stick breaks behind you. A goblin attacks you!\n";
+        std::cout << "Hesitantly, you enter the dark cave. Your footsteps echo off the walls and bounce back to you. There are also other sounds. Is that? No, it can’t be something else. You must be imagining it. But you can’t help but wonder if you’re really alone.\n";
+        int diceRoll = randint(1, 5);
+        if (diceRoll == 2) {
+            std::cout << "Something shiny catches your eye. You walk over and pick it up. It’s a rusty sword with one stubborn spot that remains shiny. You picked up the Stubborn Sword. (You can now view the Stubborn Sword from your inventory)";
+            player.addItem(Item(200, "Stubborn Sword", "A rusty sword with one stubborn shiny spot.", false));
+        }
         battle(player, 2);
         break;
 
